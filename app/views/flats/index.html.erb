@@ -2,6 +2,8 @@
 
 <div class="cards">
   <% @flats.each do |flat| %>
-    <%= render 'flat', flat: flat %>
+    <%= link_to flat_path(flat) do %>
+      <%= render 'flat', flat: flat %>
+    <% end %>
   <% end %>
 </div>

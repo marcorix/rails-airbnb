@@ -1,0 +1,13 @@
+<h1>My Profile page</h1>
+
+<h3>My Bookings</h3>
+<ul>
+  <% current_user.bookings.each do |booking| %>
+    <li>
+      <p><%= booking.flat.name %></p>
+      <p>From: <%= booking.start_date %></p>
+      <p>TO: <%= booking.end_date %></p>
+    </li>
+    <hr>
+  <% end %>
+</ul>
