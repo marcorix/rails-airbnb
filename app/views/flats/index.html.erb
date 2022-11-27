@@ -1,2 +1,7 @@
-<h1>Flats#index</h1>
-<p>Find me in app/views/flats/index.html.erb</p>
+<h1>Flats</h1>
+
+<div class="cards">
+  <% @flats.each do |flat| %>
+    <%= render 'flat', flat: flat %>
+  <% end %>
+</div>
