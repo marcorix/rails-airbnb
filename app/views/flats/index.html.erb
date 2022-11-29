@@ -1,9 +1,23 @@
 <h1>Flats</h1>
 
-<div class="cards">
-  <% @flats.each do |flat| %>
-    <%= link_to flat_path(flat) do %>
-      <%= render 'flat', flat: flat %>
-    <% end %>
+<div data-controller="search-flats">
+
+  <%= form_with url: flats_path, method: :get, html: {class: "d-flex mb-4",
+                                 data: {search_flats_target: "form"}} do |f| %>
+    <%= f.text_field :query,
+                      class: "form-control",
+                      placeholder: "Search for a Flat",
+                      value: params[:query],
+                      data: {
+                        search_flats_target: "input",
+                        action: "keyup->search-flats#update"
+                        } %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
   <% end %>
+
+  <div class="cards" data-search-flats-target="list">
+    <%= render 'flats/list', flats: @flats %>
+  </div>
+
+
 </div>
