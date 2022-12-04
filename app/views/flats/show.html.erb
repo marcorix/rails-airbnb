@@ -1,9 +1,11 @@
-<h1><%= @flat.name %></h1>
-<%= render 'flat', flat: @flat %>
-<hr>
+<div class="container w-50">
+  <h1><%= @flat.name %></h1>
+  <%= render 'flat', flat: @flat %>
+  <hr>
 
-<%=  simple_form_for [@flat, @booking] do |f| %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+  <%=  simple_form_for [@flat, @booking] do |f| %>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

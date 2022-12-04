@@ -1,13 +1,46 @@
-<h1>My Profile page</h1>
+<div class="container"  data-controller="tabs">
+  <h1>My Profile page</h1>
 
-<h3>My Bookings</h3>
-<ul>
-  <% current_user.bookings.each do |booking| %>
-    <li>
-      <p><%= booking.flat.name %></p>
-      <p>From: <%= booking.start_date %></p>
-      <p>TO: <%= booking.end_date %></p>
-    </li>
-    <hr>
-  <% end %>
-</ul>
+  <ul class="tabs">
+    <li data-action="click->tabs#displayFlats" data-tabs-target="flatsLink" class="active">My Flats</li>
+    <li data-action="click->tabs#displayBookings" data-tabs-target="bookingsLink">My Bookings</li>
+    <li data-action="click->tabs#displayRequested" data-tabs-target="requestedLink">Requested</li>
+  </ul>
+
+  <div>
+
+    <div data-tabs-target="flats">
+    <h4>My Flats</h4>
+      <ul>
+        <% current_user.flats.each do |flat| %>
+          <li>
+            <p><%= flat.name %></p>
+            <p><%= flat.address %></p>
+          </li>
+          <hr>
+        <% end %>
+      </ul>
+    </div>
+
+    <div data-tabs-target="bookings" >
+    <h4>My Bookings</h4>
+      <ul>
+        <% current_user.bookings.each do |booking| %>
+          <li>
+            <p><%= booking.flat.name %></p>
+            <p>From: <%= booking.start_date %></p>
+            <p>TO: <%= booking.end_date %></p>
+          </li>
+          <hr>
+        <% end %>
+      </ul>
+    </div>
+
+    <div data-tabs-target="requested">
+    <h4>Requested</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quam! Accusantium, exercitationem optio provident ducimus quasi repudiandae repellat reiciendis consectetur asperiores libero nesciunt nemo expedita rem ullam eos facilis sunt!</p>
+    </div>
+
+
+  </div>
+</div>
